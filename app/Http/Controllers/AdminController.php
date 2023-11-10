@@ -9,4 +9,27 @@ class AdminController extends Controller
     public function index(){
         return view('admin.dashboard');
     }
+
+
+    // public function subCategoryDashboard(){
+    //     return view('admin.category.dashboard');
+    // }
+
+    // public function addSubCategoryDashboard(){
+    //     return view('admin.category.add');
+    // }
+
+
+    public function productDashboard(){
+        return view('admin.product.dashboard');
+    }
+    public function allProductDashboard(){
+        return view('admin.product.add');
+    }
+    public function orderDashboard(){
+        return view('admin.order.dashboard');
+    }
+    public function pendingOrderDashboard(){
+        return view('admin.order.dashboard');
+    }
 }
