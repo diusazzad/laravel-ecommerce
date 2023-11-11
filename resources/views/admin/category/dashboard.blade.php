@@ -34,16 +34,15 @@
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-            @foreach ($subcategories as $subcategory)
+            @foreach ($categories as $category)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->id }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->subcategory_name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->category_id }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->category->category_name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->product_count }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->slug }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->created_at }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $subcategory->updated_at }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $category->id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $category->category_name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $category->subcategory_name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $category->slug }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $category->product_count }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $category->created_at }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $category->updated_at }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{-- <a href="{{ route('admin.subcategory.edit', $subcategory->id) }}"
                             class="text-indigo-600 hover:text-indigo-900">Edit</a> --}}

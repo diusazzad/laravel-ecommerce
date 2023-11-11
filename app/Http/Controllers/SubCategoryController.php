@@ -11,7 +11,7 @@ class SubCategoryController extends Controller
 
     public function subCategoryDashboard(){
 
-        $subcategories = Subcategory::latest()->get();
+        $subcategories = Subcategory::all();
 
         return view('admin.subcategory.dashboard', compact('subcategories'));
 

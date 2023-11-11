@@ -43,10 +43,9 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->middleware(['auth','role:administrator'])->group(function(){
     Route::controller(AdminController::class)->group(function(){
         Route::get('/dashboard','index')->name('admin.dashboard');
+        // Route::get('/dashboard','subcategoryCount')->name('admin.subcategory.count');
 
-        // Order
-        Route::get('/order/dashboard', 'orderDashboard')->name('admin.order.dashboard');
-        Route::get('/order/pending', 'pendingOrderDashboard')->name('admin.order.pending');
+
     });
 
     Route::controller(CategoryController::class)->group(function(){
@@ -79,9 +78,11 @@ Route::prefix('admin')->middleware(['auth','role:administrator'])->group(functio
         // Route::delete('/product/{category}', 'categoryDestroy')->name('admin.categories.destroy');
     });
 
-    // Route::controller(OrderController::class)->group(function(){
-
-    // });
+    Route::controller(OrderController::class)->group(function(){
+        // Order
+        Route::get('/order/dashboard', 'orderDashboard')->name('admin.order.dashboard');
+        Route::get('/order/pending', 'pendingOrderDashboard')->name('admin.order.pending');
+    });
 });
 
 require __DIR__.'/auth.php';
