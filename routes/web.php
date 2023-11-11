@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,16 +44,6 @@ Route::prefix('admin')->middleware(['auth','role:administrator'])->group(functio
     Route::controller(AdminController::class)->group(function(){
         Route::get('/dashboard','index')->name('admin.dashboard');
 
-
-
-        // Sub Category
-        Route::get('/subcategory/dashboard', 'subCategoryDashboard')->name('admin.subcategory.dashboard');
-        Route::get('/subcategory/add', 'addSubCategoryDashboard')->name('admin.subcategory.add');
-
-        // Product
-        Route::get('/product/dashboard', 'productDashboard')->name('admin.product.dashboard');
-        Route::get('/product/add', 'allProductDashboard')->name('admin.product.add');
-
         // Order
         Route::get('/order/dashboard', 'orderDashboard')->name('admin.order.dashboard');
         Route::get('/order/pending', 'pendingOrderDashboard')->name('admin.order.pending');
@@ -66,7 +59,29 @@ Route::prefix('admin')->middleware(['auth','role:administrator'])->group(functio
         Route::delete('/categories/{category}', 'categoryDestroy')->name('admin.categories.destroy');
 
     });
-});
 
+    Route::controller(SubCategoryController::class)->group(function(){
+
+        // Sub Category
+        Route::get('/subcategory/dashboard', 'subCategoryDashboard')->name('admin.subcategory.dashboard');
+
+        Route::get('/subcategory/add', 'addSubCategoryDashboard')->name('admin.subcategory.add');
+        Route::post('/subcategory/store','subCategoryStore')->name('admin.subcategory.store');
+    });
+
+    Route::controller(ProductController::class)->group(function(){
+
+        // Product
+        Route::get('/product/dashboard', 'productDashboard')->name('admin.product.dashboard');
+        Route::get('/product/add', 'addProductDashboard')->name('admin.product.add');
+        Route::post('/product/store','storeProduct')->name('admin.product.store');
+        // Route::get('/product/{category}/edit',  'categoryEdit')->name('admin.categories.edit');
+        // Route::delete('/product/{category}', 'categoryDestroy')->name('admin.categories.destroy');
+    });
+
+    // Route::controller(OrderController::class)->group(function(){
+
+    // });
+});
 
 require __DIR__.'/auth.php';

@@ -20,12 +20,7 @@ class AdminController extends Controller
     // }
 
 
-    public function productDashboard(){
-        return view('admin.product.dashboard');
-    }
-    public function allProductDashboard(){
-        return view('admin.product.add');
-    }
+
     public function orderDashboard(){
         return view('admin.order.dashboard');
     }
